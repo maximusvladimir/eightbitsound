@@ -16,15 +16,24 @@ public class SoundTest extends Applet{
 		g.setColor(Color.black);
 		g.drawString("Playing title menu sound.", 0, 50);
 		
-		playTitleMenu();
-		sleep(8000);
+		//playTitleMenu();
+		//sleep(8000);
 		
 		g.setColor(Color.white);
 		g.fillRect(0,0,getWidth(),getHeight());
 		g.setColor(Color.black);
 		g.drawString("Playing game over sound.", 0, 50);
 		
-		playGameOver();
+		//playGameOver();
+		//sleep(5000);
+		
+		g.setColor(Color.white);
+		g.fillRect(0,0,getWidth(),getHeight());
+		g.setColor(Color.black);
+		g.drawString("Playing new turn sound.", 0, 50);
+		
+		//playNewTurn();
+		playError();
 		sleep(5000);
 		
 		System.exit(0);
@@ -36,6 +45,30 @@ public class SoundTest extends Applet{
 		while (System.currentTimeMillis() <= stamp + milliseconds) {
 			
 		}
+	}
+	
+	public void playNewTurn() {
+		StepList lists = new StepList();	
+		for (int loops = 0; loops < 1; loops++) {
+			for (int c = 0; c < 70000; c++) {
+				double dub = (Math.log(c) ) * c;
+				lists.addStep(dub);
+			}
+		}
+		
+		SoundMan.playSound(lists,5.0);
+	}
+	
+	public void playError() {
+		StepList lists = new StepList();	
+		for (int loops = 0; loops < 1; loops++) {
+			for (int c = 0; c < 70000; c++) {
+				double dub = Math.atan2(c,c % 5) * c;
+				lists.addStep(dub);
+			}
+		}
+		
+		SoundMan.playSound(lists,5.0);
 	}
 	
 	public void playTitleMenu() {
