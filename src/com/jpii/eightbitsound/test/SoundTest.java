@@ -32,9 +32,13 @@ public class SoundTest extends Applet{
 		g.setColor(Color.black);
 		g.drawString("Playing new turn sound.", 0, 50);
 		
-		//playNewTurn();
-		playError();
-		sleep(5000);
+		playTitleMenu();
+		sleep(1000);
+		
+		//lets load up the produced file.
+		//Notice the quality difference.
+		SoundMan.playSound(SoundMan.loadStepSound("titlescreen.b8s"), 5.0);
+		sleep(10000);
 		
 		System.exit(0);
 	}
@@ -67,7 +71,6 @@ public class SoundTest extends Applet{
 				lists.addStep(dub);
 			}
 		}
-		
 		SoundMan.playSound(lists,5.0);
 	}
 	
@@ -83,7 +86,7 @@ public class SoundTest extends Applet{
 				lists.addStep(dub % 5);
 			}
 		}
-		
+		SoundMan.saveStepSound(lists, 0, "titlescreen.b8s");
 		SoundMan.playSound(lists,30.0);
 	}
 	public void playGameOver() {
